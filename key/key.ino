@@ -19,6 +19,7 @@ static const int buttonPin4 = 5;
 static const int ledPin1 = 13;
 static const int ledPin2 = 0;
 static const int ledPin3 = 1;
+static const int relay = 6;
 
 // 引脚状态
 static int buttonState1 = 0;
@@ -32,6 +33,7 @@ void setup() {
   pinMode(ledPin1, OUTPUT);
   pinMode(ledPin2, OUTPUT);
   pinMode(ledPin3, OUTPUT);
+  pinMode(relay, OUTPUT);
 
   // 初始化按钮引脚为输入模式
   pinMode(buttonPin1, INPUT_PULLUP);
@@ -97,6 +99,8 @@ void loop() {
   if (buttonState4 == LOW) {
     refresh(4);
 
+    digitalWrite(relay, HIGH);
+
     digitalWrite(ledPin1, HIGH);
     digitalWrite(ledPin2, HIGH);
     digitalWrite(ledPin3, HIGH);
@@ -121,5 +125,8 @@ void loop() {
     digitalWrite(ledPin2, HIGH);
     digitalWrite(ledPin3, HIGH);
     delay(1000);
+  }
+  else {
+    digitalWrite(relay, LOW);
   }
 }
